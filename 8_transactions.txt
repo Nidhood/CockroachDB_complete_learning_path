@@ -1,0 +1,5 @@
+* "BEGIN;" -> Starts a transaction statement.
+
+* "COMMIT;" -> Means do the transaction right now (if this is not set before the transaction, it will never be done).
+
+* "ROLLBACK;" -> Trash the transaction made after.

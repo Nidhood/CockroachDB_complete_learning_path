@@ -1,0 +1,33 @@
+What is a node?
+
+-> Servers or virtual machines.
+
+What is a cluster?
+
+-> Data pooling or interconnected servers that work together to store and manage data in a distributed manner. 
+
+How many nodes are needed to start a production cluster?
+
+-> At least 3.
+
+How does Cockroach DB store data?
+
+-> (Keyspace) It stores all user and system data in a giant, monolithic, ordered map of key-value pairs, in which this key space is divided into what are called ranges, contiguous chunks of the key space so that a key can be found in only one range.
+
+In what range is the data distributed?
+
+-> Being a distributed database, it runs across multiple nodes united in a single cluster, distributing the ranges evenly among the cluster nodes.
+
+What are cockroach DB's important functions?
+
+-> Leaseholder Ensure readers only see committed writes.
+
+-> Replicas join together to form a raft group.
+
+-> Distributed consensus for writing via raft.
+
+-> Clusters recovery to resilient state through up-replication.
+
+-> Node declared dead after 5 minutes by default.
+
+-> Increase replication factor by 5+ empowers cluster resiliency.

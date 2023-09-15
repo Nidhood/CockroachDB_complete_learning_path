@@ -1,0 +1,9 @@
+* "cockroach workload" -> Parameter to generate data and query loads from cluster.
+
+* "cockroach workload init [schema name]" -> Load schema.
+
+* "cockroach sql --insecure" -> Opens built-in sql shell.
+
+* "cockroach sql --insecure < [sql script]" -> Just runs the SQL script inside the system.
+
+* "pkill -9 cokroach" -> stop permanently a Cockroach DB Cluster.

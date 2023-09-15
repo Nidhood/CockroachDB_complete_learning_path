@@ -1,0 +1,26 @@
+* "--store=cockroach-data-1" -> Select the route to save the node data.
+
+* "--background" -> Runs a node in the background.
+
+IMPORTANT = Where the node must listen for connections, each node will be different so as not to saturate the connection to that port.
+
+    e. g. =>    ###################     Node #1     ###########################
+                cockroach start --insecure --listen-addr=localhost:26257 \ # -> Each needs to be different, otherwise will show an error.
+                --join=localhost:26257,localhost:26258,localhost:26259 \
+                --http-addr=localhost:8080 --store=cockroach-data-1 --background
+
+                ###################     Node #2     ###########################
+                cockroach start --insecure --listen-addr=localhost:26258 \  # -> Each needs to be different, otherwise will show an error.
+                --join=localhost:26257,localhost:26258,localhost:26259 \
+                --http-addr=localhost:8081 --store=cockroach-data-2 --background
+
+                ###################     Node #4     ###########################
+                cockroach start --insecure --listen-addr=localhost:26259 \  # -> Each needs to be different, otherwise will show an error.
+                --join=localhost:26257,localhost:26258,localhost:26259 \
+                --http-addr=localhost:8082 --store=cockroach-data-3 --background
+
+* "cockroach init --host localhost:26258 --insecure" -> After that, we need to start our cluster!.
+
+
+* "xdg-open http://localhost:8080" -> Open interface cluster managing (Linux).
+* "open http://localhost:8080" -> Open interface cluster managing (MACos).

@@ -1,0 +1,13 @@
+* "cockroach start-single-node" -> Launches a one-node cluster (don't scale and don't replicate data).
+
+* "cockroach --insecure" -> Start the node in an insecure state, with no encryption.
+
+* "cockroach --listen-addr=[host]:[port]" -> Where the node should listen for connections.
+
+* "cockroach --http-addr=[host]:[port]" -> Find the admin UI visibility to our cluster.
+
+        e. g. => cockroach start-single-node --insecure --listen-addr=localhost:26257 --http-addr=localhost:8080
+
+        (go to http://localhost:8080 and see the cluster information!)
+
+* "sudo lsof -i :8080" -> Identify PID ID and kill it whit "kill -9 $( lsof -i:8080 -t )".

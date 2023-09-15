@@ -1,0 +1,7 @@
+* "CREATE TABLE [table name] ( attributes );" -> Set the database, it will create a table with the specified attributes characteristics.
+
+    e. g. => CREATE TABLE students (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), name STRING);
+
+* "SHOW CREATE TABLE [table name];" -> Show the schema of the table specified. 
+
+* "ALTER TABLE [table name] ADD COLUMN [column name] [type];" -> Modify the table, in this case, we are adding one column with the specified name.

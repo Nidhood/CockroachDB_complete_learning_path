@@ -1,0 +1,17 @@
+* "SHOW INDEXES FROM users;" -> Show the indexes (keys characteristics);
+
+* "EXPLAIN [query];" -> Shows information of the:
+                                                * Table field = We're looking at the primary index;
+                                                * Spans field = Not looking at everything, just the part where the ID is at least one and not more than one.
+
+        e.g. => EXPLAIN SELECT * FROM users WHERE id = 1;
+             => EXPLAIN SELECT * FROM users WHERE last_name = 'Cross' AND first_name = 'William'; (using users.sql) -> this is awful.         
+
+* "CREATE INDEX [index_name] ON [table name] [columns]" -> Creates a secondary index, that is based on a data structure that's ordered by the columns in the query.
+
+        e.g. => CREATE INDEX my_index ON users (last_name, first_name);
+
+* "SHOW INDEXES FROM [table name];" -> Shows all the indexes manually and automatically created.
+
+        e.g. => SHOW INDEXES FROM users;
+             => EXPLAIN SELECT * FROM users WHERE last_name = 'Cross' AND first_name = 'William'; (using users.sql) -> Here can be the develop. 

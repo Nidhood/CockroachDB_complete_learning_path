@@ -1,0 +1,55 @@
+* "--locality=country=us,region=us-east" -> Define the location of the node.
+
++ "--store=node1" -> Wtf
+
+    e.g. => cockroach start --insecure --locality=country=us,region=us-east --store=node1 --listen-addr=localhost:26257 --http-addr=localhost:8080 --join=localhost:26257,localhost:26258,localhost:26259 --background
+            cockroach start --insecure --locality=country=us,region=us-east --store=node2 --listen-addr=localhost:26258 --http-addr=localhost:8081 --join=localhost:26257,localhost:26258,localhost:26259 --background
+            cockroach start --insecure --locality=country=us,region=us-east --store=node3 --listen-addr=localhost:26259 --http-addr=localhost:8082 --join=localhost:26257,localhost:26258,localhost:26259 --background
+            cockroach init --insecure --host=localhost:26257
+            cockroach start --insecure --locality=country=us,region=us-central --store=node4 --listen-addr=localhost:26260 --http-addr=localhost:8083 --join=localhost:26257,localhost:26258,localhost:26259 --background
+            cockroach start --insecure --locality=country=us,region=us-central --store=node5 --listen-addr=localhost:26261 --http-addr=localhost:8084 --join=localhost:26257,localhost:26258,localhost:26259 --background
+            cockroach start --insecure --locality=country=us,region=us-central --store=node6 --listen-addr=localhost:26262 --http-addr=localhost:8085 --join=localhost:26257,localhost:26258,localhost:26259 --background
+            cockroach start --insecure --locality=country=us,region=us-west --store=node7 --listen-addr=localhost:26263 --http-addr=localhost:8086 --join=localhost:26257,localhost:26258,localhost:26259 --background
+            cockroach start --insecure --locality=country=us,region=us-west --store=node8 --listen-addr=localhost:26264 --http-addr=localhost:8087 --join=localhost:26257,localhost:26258,localhost:26259 --background
+            cockroach start --insecure --locality=country=us,region=us-west --store=node9 --listen-addr=localhost:26265 --http-addr=localhost:8088 --join=localhost:26257,localhost:26258,localhost:26259 --background
+            cockroach workload init movr
+            cockroach sql --insecure --host=localhost:26257 --execute="SELECT * FROM movr.users LIMIT 10;"
+            cockroach sql --insecure --host=localhost:26257 --execute="SHOW RANGES FROM TABLE movr.users;"
+
+* "SHOW REGIONS FROM CLUSTER;" -> Show all regions that are inside the cluster.
+
+* "ALTER DATABASE [database name] PRIMARY REGION [region name];" -> Add the region specified to the database, and is selected the principal region.
+
+* "SHOW REGIONS FROM DATABASE [database name];" -> Show all regions inside the database.
+
+* "ALTER DATABASE [database name] SURVIVE REGION FAILURE;" -> Can tolerate the loss of any individual zone.
+
+* "SHOW SURVIVAL GOAL FROM DATABASE [database name];" -> Show the survival zones.
+
+* "ALTER TABLE [table name] SET LOCALITY GLOBAL; -> Set the table global.
+
+* "ALTER TABLE [table name] SET LOCALITY BY ROW; -> Set the table rows global.
+
+    e.g. => cockroach demo move --nodes 9
+            
+            SHOW REGIONS FROM CLUSTER;
+
+            ALTER DATABASE movr PRIMARY REGION "us-east1";
+            SHOW REGIONS FROM DATABASE movr;
+
+            ALTER DATABASE movr ADD REGION "us-west1";
+            ALTER DATABASE movr ADD REGION "europe-west1";
+            SHOW REGIONS FROM DATABASE movr;
+            SHOW TABLES;
+
+            SHOW SURVIVAL GOAL FROM DATABASE movr;
+            ALTER DATABASE movr SURVIVE REGION FAILURE;
+            SHOW SURVIVAL GOAL FROM DATABASE movr;
+
+            SHOW CREATE TABLE promo_codes;
+            ALTER TABLE promo_codes SET LOCALITY GLOBAL;
+            SHOW CREATE TABLE promo_codes; 
+
+            SHOW CREATE TABLE rides;
+            ALTER TABLE rides LOCALITY REGIONAL BY ROW;
+            SHOW TABLES;

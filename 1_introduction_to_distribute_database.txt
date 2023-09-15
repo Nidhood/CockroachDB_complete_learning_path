@@ -1,0 +1,55 @@
+¿What is a ditribuit database?
+
+-> A distributed database needs to have the following characteristics:
+
+* Scalar: Have the ability to evenly distribute data across multiple distributed participants in the database.
+
+* Consistency: This should mediate contention and deliver the same level of isolation for transactions expected in a single instance database.
+
+* Resilience: We can reduce the time it takes to recover from a failure down to near zero and replicate data naturally without any external configuration.
+
+* Geo-replication: This should allow for the distribution of data through a complex, widely dispersed geographic environment. Ability to control where your data resides in a globally distributed cluster.
+
+* SQL: The database must speak SQL, the developers should be able to use de SQL dialect they are already familiar with.
+
+* Multi-cloud: It shouldn't be tied to a specific cloud provider (run anywhere).
+
+¿What are acid transactions?
+
+-> Any transaction in cockroach DB guarantees acid semantics (avoid system crashes): 
+
+* Atomicity: Atomicity requires transactions to be "all or nothing." If any part of the transaction fails, the entire transaction is aborted, and the database is left unchanged.
+
+* Consistency: Consistency enforces rules on data. This means that any data written in a transaction will be valid according to all defined rules, including SQL constraints.
+
+* Isolation: Insolation ensures that concurrent transactions will leave the database in the same state that it would have been in if the transactions were executed serially, one after another.
+
+* Durability: Durability guarantees that once a transaction is committed, it will remain so even in the event of power loss, crashes, or failures.
+
+¿What is a serializable Insolation?
+
+-> Every transaction behaves as if it had exclusive use of the entire cluster as it performed the transaction.
+
+¿What type of SQL speaks cockroach DB?
+
+-> It uses the open-source PostgreSQL wire protocol, using a mature existing ecosystem.
+
+¿What cockroach DB delivers?
+
+* ACID transactions.
+
+* PostgreSQL wire protocol.
+
+* Geo-replication.
+
+* Multi-cloud.
+
+* Advanced admin tools.
+
+* Optimization.
+
+* Baked in security
+
+¿What is hotizontal scalar?
+
+-> Multiple services or containers.
