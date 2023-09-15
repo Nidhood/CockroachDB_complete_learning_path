@@ -1,1 +1,0 @@
-/home/nidhood/Desktop/CockroachDB/CockroachDB_complete_learning_path/cockroach-data/cockroach-temp129790354
