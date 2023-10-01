@@ -1,0 +1,32 @@
+What is the problem with using a server infrastructure in our projects?
+
+-> We need to spend a long time configuring and maintaining servers.
+
+-> The costs.
+
+
+What is the solution?
+
+-> Cloud-based infrastructure is a great shift in power for developers, but also has a lot of responsability.
+
+
+When we use a Cloud-based infrastructure?
+
+-> Application using databases.
+
+-> New applications.
+
+-> Test new ideas & new technology.
+
+-> Improve latency.
+
+-> Handles spiky loads.
+
+-> More bandwidth.
+
+-> Minimal OPS.
+
+How to do the connection:
+
+* "cockroach sql --url 'postgresql://nidhood:y5nG6aoCquWwGb_Zy3jKOA@fitful-leopard-5353.g8z.cockroachlabs.cloud:26257/Ponti-reparte?sslmode=verify-full'
+
